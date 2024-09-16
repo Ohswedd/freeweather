@@ -1,42 +1,45 @@
 from setuptools import setup, find_packages
+import pathlib
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+HERE = pathlib.Path(__file__).parent
+
+README = (HERE / "README.md").read_text(encoding="utf-8")
+
+with open("requirements.txt") as f:
+    REQUIREMENTS = f.read().splitlines()
+
+VERSION = "0.1.0"
 
 setup(
-    name="freeweather",  # Replace with your desired package name
-    version="0.1.0",
-    author="Edoardo Federici",
-    author_email="ohswedd@gmail.com",
+    name="freeweather",
+    version=VERSION,
+    author="Your Name",
+    author_email="your.email@example.com",
     description="A Python library for fetching weather data using Open-Meteo API.",
-    long_description=long_description,
+    long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/ohswedd/freeweather", 
-    packages=find_packages(),
+    url="https://github.com/Ohswedd/freeweather",  
+    packages=find_packages(exclude=["tests*"]),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License", 
+        "License :: OSI Approved :: MIT License",  
         "Operating System :: OS Independent",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Utilities",
     ],
     python_requires='>=3.7',
-    install_requires=[
-        "httpx",
-        "pydantic",
-        "pytest",
-        "pytest-asyncio",
-        "anyio",
-        "Faker",
-        "tenacity",
-    ],
+    install_requires=REQUIREMENTS,
     extras_require={
         "dev": [
             "pytest",
             "pytest-asyncio",
             "Faker",
+            "black",
+            "flake8",
         ],
     },
-    include_package_data=True,
-    package_data={
-        # If you have non-Python files, specify them here
-    },
+    include_package_data=True,  
+    license="MIT", 
+    keywords="weather open-meteo API",
 )
