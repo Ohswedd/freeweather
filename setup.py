@@ -8,13 +8,13 @@ README = (HERE / "README.md").read_text(encoding="utf-8")
 with open("requirements.txt") as f:
     REQUIREMENTS = f.read().splitlines()
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 setup(
     name="freeweather",
     version=VERSION,
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Edoardo Federici",
+    author_email="ohswedd@gmail.com",
     description="A Python library for fetching weather data using Open-Meteo API.",
     long_description=README,
     long_description_content_type="text/markdown",
